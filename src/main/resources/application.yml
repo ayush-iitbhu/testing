@@ -2,3 +2,12 @@ server:
   port: 8080
   servlet:
     context-path: /user-service
+
+  tomcat:
+    basedir: /opt/apps/user-service
+    accesslog:
+      enabled: true
+      prefix: access-log
+      file-date-format: .yyyy-MM-dd
+      suffix: .log
+      pattern: '%h [%{X-Forwarded-For}i] %l %u [%{dd-MM-yyyy HH:mm:ss.SSS}t]  %T %D "%r" %s %b "%{Referer}i" "%{User-Agent}i" %I %{requestId}s'
