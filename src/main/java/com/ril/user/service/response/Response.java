@@ -1,14 +1,14 @@
 package com.ril.user.service.response;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserDetails {
-    private String userId;
-    private String name;
-    private String phoneNumber;
+public class Response {
+    private Integer statusCode;
+    private String message;
 }

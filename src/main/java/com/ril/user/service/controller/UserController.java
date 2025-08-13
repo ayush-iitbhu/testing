@@ -1,16 +1,15 @@
 package com.ril.user.service.controller;
+import com.ril.user.service.request.UserRequest;
+import com.ril.user.service.response.Response;
 import com.ril.user.service.response.UserDetails;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1")
 public class UserController {
 
-    @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getUser", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDetails getUserDetails(@RequestParam String userId){
         UserDetails userDetails = new UserDetails();
         userDetails.setUserId(userId);
@@ -18,4 +17,15 @@ public class UserController {
         userDetails.setPhoneNumber("9973013524");
         return userDetails;
     }
+
+    @PostMapping(value = "/saveUser", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response saveUserDetails(@RequestBody UserRequest request){
+        // process the request
+        return Response.builder().
+                statusCode(1).
+                message("Success").
+                build();
+
+    }
+
 }
